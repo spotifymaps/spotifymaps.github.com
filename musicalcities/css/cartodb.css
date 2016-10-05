@@ -84,7 +84,7 @@ div.cartodb-infowindow {
 div.cartodb-popup {
     position: relative;
     width: 226px;
-    height: 500px;
+    height: 425px;
     padding: 7px 0 0;
     margin: 0;
     background: url(http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/img/light.png) no-repeat -226px 0
