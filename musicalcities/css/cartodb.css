@@ -101,7 +101,6 @@ div.cartodb-popup div.cartodb-popup-content {
     width: 190px;
     max-width: 190px;
     min-height: 5px;
-    height: auto;
     max-height: 600px !important; 
     margin: 0;
     padding: 0;
