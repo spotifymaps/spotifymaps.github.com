@@ -179,7 +179,7 @@ div.cartodb-popup .jspContainer {
     overflow: hidden;
     position: relative;
     outline: 0
-    height: 500px !important;
+    height: 400px !important;
 }
 div.cartodb-popup .jspContainer * {
     outline: 0
