@@ -178,7 +178,7 @@ div.cartodb-popup.header.no_fields div.cartodb-edit-buttons {
 div.cartodb-popup .jspContainer {
     overflow: hidden;
     position: relative;
-    outline: 0
+    outline: 0;
     height: 400px !important;
 }
 div.cartodb-popup .jspContainer * {
