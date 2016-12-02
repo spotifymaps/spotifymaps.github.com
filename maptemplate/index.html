@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spotify | Musical Cities</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="https://carto.com/assets/favicon.ico" />
+    <style>
+      html, body, #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      div.jspContainer::before {
+           height: 0;
+        }
+      div.jspContainer:before{content:none;}
+      .jspPane img {
+        display: none;
+      }
+      div.cartodb-popup .jspPane {
+        padding: 0 !Important;
+      }
+      div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {
+        background: url(img/bg.svg) no-repeat left -1px !important;
+        background-size: 100%;
+      }
+      div.cartodb-popup.v2 div.cartodb-popup-content img + p {
+        color: #fff;
+        margin: 0 0 10px;
+      }
+      div.cartodb-popup.v2 a.cartodb-popup-close-button {
+        box-shadow: 0 0 0 !important;
+        background: none !important;
+        right: 10px !important;
+        top: 10px !important;
+      }
+      div.cartodb-popup.v2 a.cartodb-popup-close-button:after, div.cartodb-popup.v2 a.cartodb-popup-close-button:before {
+        background: #fff !important;
+      }
+      div.cartodb-popup.v2 {
+        box-shadow: 0 0 0 !important;
+        border-radius: 0 !important;
+      }
+      div.cartodb-popup.v2 div.cartodb-popup-tip-container:before {
+        background: none !important;
+      }
+    </style>
+
+    <!-- <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" /> -->
+    <link rel="stylesheet" href="css/cartodb.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <!-- include cartodb.js library -->
+    <!--<script src="http://libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script> -->
+    <!--<script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.11/cartodb.js"></script> -->
+    <script src="js/cartodb.js"></script>
+
+    <script>
+      function main() {
+        cartodb.createVis('map', 'https://spotifymaps.carto.com/u/eliotvb/api/v2/viz/_COPY_YOUR_VIZ_JSON_ID_HERE_/viz.json'
+          , {
+            // title: true,
+            // description: true,
+            // search: true,
+            // tiles_loader: true,
+            // center_lat: -22.9785,
+            // center_lon: -43.3373, 
+            // zoom: 17,
+            // scrollwheel: false,
+            search: false,
+            carto_logo: false,
+            // shareable: false,
+            layer_selector: false,
+        })
+
+        .done(function(vis, layers) {
+          // layer 0 is the base layer, layer 1 is cartodb layer
+          // setInteraction is disabled by default
+          layers[1].setInteraction(true);
+          layers[1].on('featureOver', function(e, pos, latlng, data) {
+            cartodb.log.log(e, pos, latlng, data);
+          });
+          // you can get the native map to work with it
+          $('jspContainer:before').css('display','none');
+          var map = vis.getNativeMap();
+
+          $("jspContainer:before").css('height', '10px');
+          $('div.jspContainer::before').css('z-index','0');
+          $('div.jspContainer::before').css('height','0');
+          $('jspContainer::before').css('content','none');
+          $('jspContainer').addClass('no-before');
+          $('div.jspContainer:before').css('display','none');
+          // $('jspContainer').css("height: 400px;");
+          // now, perform any operations you need
+          // map.setZoom(3);
+          // map.panTo([50.5, 30.5]);
+
+        })
+        .error(function(err) {
+          console.log(err);
+        });
+      }
+      window.onload = main;
+
+
+
+    </script>
+  </body>
+</html>
